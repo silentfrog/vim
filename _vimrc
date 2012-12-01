@@ -14,7 +14,7 @@ Bundle "gmarik/vundle"
 " Bundle "synmark.vim"
 "Bundle "mileszs/ack.vim"
 "Bundle "taglist"
-"Bundle "vim-scripts/ctrlp.vim"
+Bundle "vim-scripts/ctrlp.vim"
 "Bundle "wincent/Command-T"
 "Bundle "tomtom/tcomment_vim"
 Bundle "FuzzyFinder"
@@ -27,7 +27,7 @@ Bundle "fs111/pydoc.vim"
 Bundle "https://github.com/altercation/vim-colors-solarized.git"
 Bundle "michaeljsmith/vim-indent-object"
 Bundle "mitechie/pyflakes-pathogen"
-Bundle "msanders/snipmate.vim"
+" Bundle "msanders/snipmate.vim"
 Bundle "scrooloose/nerdtree"
 Bundle "silentfrog/Parameter-Text-Objects"
 Bundle "sjl/gundo.vim"
@@ -104,12 +104,23 @@ function! ClearReg()
     let @y=''
 endfunction
 
-nmap <leader>s <ESC>:call ClearReg()<CR>"xdia<ESC>:let b:pos_save = getpos('.')<CR>:call MoveRight(1)<CR>"ydia"xP:call setpos('.', b:pos_save)<CR>"yP`[
+nmap <leader>s <ESC>:call ClearReg()<CR>"xdia<ESC>:let b:pos_save = getpos('.')<CR>:call MoveRight(1)<CR>"ydia"xP:call setpos('.', b:pos_save)<CR>"yP`,p[
 nmap <leader>t <leader>s<leader>.
 nmap <leader>S <leader>'<leader>s<leader>.
 nmap <leader>T <leader>'<leader>s
 
 au QuickFixCmdPost * cw
+
+if &term == "screen"
+    " set t_ku=k
+    " set t_kd=j
+    " set t_kr=h
+    " set t_kl=l
+    inoremap ^[OA=k
+    inoremap ^[OB=j
+    inoremap ^[OD=h
+    inoremap ^[OC=l
+endif
 
 set completeopt=menuone,longest,preview
 set complete=.,w,b,u,t
