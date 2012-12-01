@@ -3,49 +3,47 @@ filetype plugin indent off     " required!
 set rtp+=~/.vim/bundle/vundle/
 set noshellslash
 
-if !exists("g:vundle_ran")
-  call vundle#rc()
+call vundle#rc()
+" let Vundle manage Vundle
+Bundle "gmarik/vundle"
 
-  " let Vundle manage Vundle
-  " required!
-  Bundle "gmarik/vundle"
-  Bundle "tlib"
-  Bundle "tselectbuffer"
-  Bundle "tpope/vim-fugitive"
-  Bundle "Lokaltog/vim-easymotion"
-  Bundle "scrooloose/nerdtree"
-  Bundle "tomtom/tcomment_vim"
-  Bundle "tpope/vim-surround"
-  Bundle "msanders/snipmate.vim"
-  Bundle "tpope/vim-surround"
-  Bundle "tpope/vim-markdown"
-  Bundle "tpope/vim-git"
-  Bundle "ervandew/supertab"
-  " Bundle "browser.vim"
-  " Bundle "synmark.vim"
-  " Bundle "sontek/minibufexpl.vim"
-  " Bundle "holgado/minibufexpl.vim"
-  Bundle "wincent/Command-T"
-  Bundle "mitechie/pyflakes-pathogen"
-  "Bundle "mileszs/ack.vim"
-  Bundle "sjl/gundo.vim"
-  Bundle "fs111/pydoc.vim"
-  Bundle "vim-scripts/pep8"
-  Bundle "vim-scripts/grep.vim"
-  "Bundle "vim-scripts/ctrlp.vim"
-  Bundle "vim-scripts/argtextobj.vim"
-  Bundle "alfredodeza/pytest.vim"
-  " Bundle "reinh/vim-makegreen"
-  Bundle "sontek/rope-vim"
-  Bundle "Raimondi/delimitMate"
-  Bundle "michaeljsmith/vim-indent-object"
-  Bundle "L9"
-  Bundle "FuzzyFinder"
-  Bundle "silentfrog/Parameter-Text-Objects"
-  Bundle "https://github.com/altercation/vim-colors-solarized.git"
-  "Bundle "taglist"
-  let g:vundle_ran = 1
-endif
+" Bundle "browser.vim"
+" Bundle "holgado/minibufexpl.vim"
+" Bundle "reinh/vim-makegreen"
+" Bundle "sontek/minibufexpl.vim"
+" Bundle "synmark.vim"
+"Bundle "mileszs/ack.vim"
+"Bundle "taglist"
+"Bundle "vim-scripts/ctrlp.vim"
+"Bundle "wincent/Command-T"
+"Bundle "tomtom/tcomment_vim"
+Bundle "FuzzyFinder"
+Bundle "L9"
+Bundle "Lokaltog/vim-easymotion"
+Bundle "Raimondi/delimitMate"
+Bundle "alfredodeza/pytest.vim"
+Bundle "ervandew/supertab"
+Bundle "fs111/pydoc.vim"
+Bundle "https://github.com/altercation/vim-colors-solarized.git"
+Bundle "michaeljsmith/vim-indent-object"
+Bundle "mitechie/pyflakes-pathogen"
+Bundle "msanders/snipmate.vim"
+Bundle "scrooloose/nerdtree"
+Bundle "silentfrog/Parameter-Text-Objects"
+Bundle "sjl/gundo.vim"
+Bundle "sontek/rope-vim"
+Bundle "tlib"
+Bundle "tpope/vim-abolish"
+Bundle "tpope/vim-commentary"
+Bundle "tpope/vim-repeat"
+Bundle "tpope/vim-fugitive"
+Bundle "tpope/vim-git"
+Bundle "tpope/vim-markdown"
+Bundle "tpope/vim-surround"
+Bundle "tselectbuffer"
+Bundle "vim-scripts/argtextobj.vim"
+Bundle "vim-scripts/grep.vim"
+Bundle "vim-scripts/pep8"
 " ...
 
 filetype plugin indent on     " required!
@@ -85,26 +83,26 @@ set tm=500
 let g:no_parameter_object_maps = 0
 
 function! MoveLeft(num)
-  if a:num>0
-    let l:old_wchichwrap = &whichwrap
-    set whichwrap+=<,>,h,l,[,]
-    exe 'normal ' . a:num . 'h'
-    let &whichwrap=l:old_wchichwrap
-  endif
+    if a:num>0
+        let l:old_wchichwrap = &whichwrap
+        set whichwrap+=<,>,h,l,[,]
+        exe 'normal ' . a:num . 'h'
+        let &whichwrap=l:old_wchichwrap
+    endif
 endfunction
 
 function! MoveRight(num)
-  if a:num>0
-    let l:old_wchichwrap = &whichwrap
-    set whichwrap+=<,>,h,l,[,]
-    exe 'normal ' . a:num . 'l'
-    let &whichwrap=l:old_wchichwrap
-  endif
+    if a:num>0
+        let l:old_wchichwrap = &whichwrap
+        set whichwrap+=<,>,h,l,[,]
+        exe 'normal ' . a:num . 'l'
+        let &whichwrap=l:old_wchichwrap
+    endif
 endfunction
 
 function! ClearReg()
-  let @x=''
-  let @y=''
+    let @x=''
+    let @y=''
 endfunction
 
 nmap <leader>s <ESC>:call ClearReg()<CR>"xdia<ESC>:let b:pos_save = getpos('.')<CR>:call MoveRight(1)<CR>"ydia"xP:call setpos('.', b:pos_save)<CR>"yP`[
@@ -265,20 +263,20 @@ noremap <silent> <ESC><ESC> <ESC>:nohl<CR>:let g:pyflakes_use_quickfix = 1<CR>:c
 let g:use_relative_numbers=1
 " Toggle line numbers
 function! NumberToggle()
-  if (g:use_relative_numbers == 1)
-      set relativenumber!
-  else
-      set number!
-  endif
+    if (g:use_relative_numbers == 1)
+        set relativenumber!
+    else
+        set number!
+    endif
 endfunc
 
 function! RelNumberToggle()
-  if (g:use_relative_numbers == 1)
-      let g:use_relative_numbers=0
-  else
-      let g:use_relative_numbers=1
-  endif
-  call NumberToggle()
+    if (g:use_relative_numbers == 1)
+        let g:use_relative_numbers=0
+    else
+        let g:use_relative_numbers=1
+    endif
+    call NumberToggle()
 endfunc
 
 nnoremap <leader>l :call NumberToggle()<cr>
