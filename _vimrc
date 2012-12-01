@@ -41,7 +41,6 @@ Bundle "tpope/vim-git"
 Bundle "tpope/vim-markdown"
 Bundle "tpope/vim-surround"
 Bundle "tselectbuffer"
-Bundle "vim-scripts/argtextobj.vim"
 Bundle "vim-scripts/grep.vim"
 Bundle "vim-scripts/pep8"
 " ...
