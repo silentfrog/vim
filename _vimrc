@@ -2,47 +2,49 @@ set nocompatible
 filetype plugin indent off     " required!
 set rtp+=~/.vim/bundle/vundle/
 set noshellslash
-call vundle#rc()
+if !exists("g:vundle_ran")
+  call vundle#rc()
 
-" let Vundle manage Vundle
-" required!
-Bundle "gmarik/vundle"
-Bundle "tlib"
-Bundle "tselectbuffer"
-Bundle "tpope/vim-fugitive"
-Bundle "Lokaltog/vim-easymotion"
-Bundle "scrooloose/nerdtree"
-Bundle "tomtom/tcomment_vim"
-Bundle "tpope/vim-surround"
-Bundle "msanders/snipmate.vim"
-Bundle "tpope/vim-surround"
-Bundle "tpope/vim-markdown"
-Bundle "tpope/vim-git"
-Bundle "ervandew/supertab"
-" Bundle "browser.vim"
-" Bundle "synmark.vim"
-" Bundle "sontek/minibufexpl.vim"
-" Bundle "holgado/minibufexpl.vim"
-Bundle "wincent/Command-T"
-Bundle "mitechie/pyflakes-pathogen"
-Bundle "mileszs/ack.vim"
-Bundle "sjl/gundo.vim"
-Bundle "fs111/pydoc.vim"
-Bundle "vim-scripts/pep8"
-Bundle "vim-scripts/grep.vim"
-"Bundle "vim-scripts/ctrlp.vim"
-Bundle "vim-scripts/argtextobj.vim"
-Bundle "alfredodeza/pytest.vim"
-" Bundle "reinh/vim-makegreen"
-Bundle "sontek/rope-vim"
-Bundle "Raimondi/delimitMate"
-Bundle "michaeljsmith/vim-indent-object"
-Bundle "L9"
-Bundle "FuzzyFinder"
-Bundle "silentfrog/Parameter-Text-Objects"
-Bundle "https://github.com/altercation/vim-colors-solarized.git"
-"Bundle "taglist"
-
+  " let Vundle manage Vundle
+  " required!
+  Bundle "gmarik/vundle"
+  Bundle "tlib"
+  Bundle "tselectbuffer"
+  Bundle "tpope/vim-fugitive"
+  Bundle "Lokaltog/vim-easymotion"
+  Bundle "scrooloose/nerdtree"
+  Bundle "tomtom/tcomment_vim"
+  Bundle "tpope/vim-surround"
+  Bundle "msanders/snipmate.vim"
+  Bundle "tpope/vim-surround"
+  Bundle "tpope/vim-markdown"
+  Bundle "tpope/vim-git"
+  Bundle "ervandew/supertab"
+  " Bundle "browser.vim"
+  " Bundle "synmark.vim"
+  " Bundle "sontek/minibufexpl.vim"
+  " Bundle "holgado/minibufexpl.vim"
+  Bundle "wincent/Command-T"
+  Bundle "mitechie/pyflakes-pathogen"
+  Bundle "mileszs/ack.vim"
+  Bundle "sjl/gundo.vim"
+  Bundle "fs111/pydoc.vim"
+  Bundle "vim-scripts/pep8"
+  Bundle "vim-scripts/grep.vim"
+  "Bundle "vim-scripts/ctrlp.vim"
+  Bundle "vim-scripts/argtextobj.vim"
+  Bundle "alfredodeza/pytest.vim"
+  " Bundle "reinh/vim-makegreen"
+  Bundle "sontek/rope-vim"
+  Bundle "Raimondi/delimitMate"
+  Bundle "michaeljsmith/vim-indent-object"
+  Bundle "L9"
+  Bundle "FuzzyFinder"
+  Bundle "silentfrog/Parameter-Text-Objects"
+  Bundle "https://github.com/altercation/vim-colors-solarized.git"
+  "Bundle "taglist"
+  let g:vundle_ran = 1
+endif
 " ...
 
 filetype plugin indent on     " required!
@@ -163,6 +165,11 @@ nnoremap S i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w
 
 " Unfuck my screen
 nnoremap U :syntax sync fromstart<cr>:redraw!<cr>
+" Use sane regexes.
+nnoremap / /\v
+vnoremap / /\v
+nnoremap ? ?\v
+vnoremap ? ?\v
 
 " Keep search matches in the middle of the window.
 nnoremap n nzzzv
@@ -197,6 +204,7 @@ set listchars=tab:?·,nbsp:·
 "set listchars=tab:?·,trail:·,nbsp:·
 
 set hlsearch    "hilight searches by default
+set incsearch
 
 set nowrap        "dont wrap words
 set linebreak   "wrap lines at convenient points
@@ -313,7 +321,7 @@ vnoremap <silent> # :call VisualSelection('b')<CR>
 
 autocmd InsertEnter * setlocal nocursorline
 autocmd InsertLeave * setlocal cursorline
-hi CursorLine cterm=NONE ctermbg=darkgray
+"hi CursorLine cterm=NONE ctermbg=darkgray
 let g:solarized_visibility = "normal"
 set cursorline
 
