@@ -17,18 +17,18 @@ Bundle "gmarik/vundle"
 Bundle "vim-scripts/ctrlp.vim"
 "Bundle "wincent/Command-T"
 "Bundle "tomtom/tcomment_vim"
-Bundle "FuzzyFinder"
-Bundle "L9"
+"Bundle "FuzzyFinder"
+"Bundle "L9"
 Bundle "Lokaltog/vim-easymotion"
 Bundle "Raimondi/delimitMate"
 Bundle "alfredodeza/pytest.vim"
-Bundle "ervandew/supertab"
+"Bundle "ervandew/supertab"
 Bundle "fs111/pydoc.vim"
 Bundle "https://github.com/altercation/vim-colors-solarized.git"
 Bundle "michaeljsmith/vim-indent-object"
 Bundle "mitechie/pyflakes-pathogen"
 " Bundle "msanders/snipmate.vim"
-Bundle "scrooloose/nerdtree"
+"Bundle "scrooloose/nerdtree"
 Bundle "silentfrog/Parameter-Text-Objects"
 Bundle "sjl/gundo.vim"
 Bundle "sontek/rope-vim"
@@ -42,7 +42,11 @@ Bundle "tpope/vim-markdown"
 Bundle "tpope/vim-surround"
 Bundle "tselectbuffer"
 Bundle "vim-scripts/grep.vim"
-Bundle "vim-scripts/pep8"
+Bundle "vim-scripts/LustyExplorer"
+Bundle "vim-scripts/LustyJuggler"
+Bundle "Valloric/YouCompleteMe"
+Bundle "scrooloose/syntastic"
+"Bundle "vim-scripts/pep8"
 " ...
 
 filetype plugin indent on     " required!
@@ -59,6 +63,8 @@ filetype plugin indent on     " required!
 
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
+
+set mouse=
 
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
@@ -155,16 +161,18 @@ syntax enable
 au BufWritePre * call StripTrailingWhitespace()
 
 set background=light
+let g:solarized_termcolors=256
 colorscheme solarized
 let g:solarized_contrast="high"    "default value is normal
 let g:solarized_hitrail=1
+set t_Co=256
 
 set hidden
 if has("gui_running")
     set guifont=Inconsolata\ 15
     set guifont=Consolas:h14
     set guifont=Anonymous\ Pro:h15
-    set guifont=Anonymous\ Pro\ 15
+    set guifont=Anonymous\ Pro\ 12
 endif
 
 set foldmethod=indent
@@ -441,4 +449,5 @@ fun! BenIndent()
 endfun
 map --- :call BenIndent()<CR>
 
+let g:ycm_complete_in_comments = 1
 let g:pyflakes_use_quickfix = 0
